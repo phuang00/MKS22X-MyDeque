@@ -18,9 +18,9 @@ public class MyDeque<E>{
   }
 
   public String toString(){
-    if (start == end) return "{}";
+    if (size() == 0) return "{}";
     String ans = "{";
-    for (int i = start; i <= end && i < data.length; i++){
+    for (int i = start;(start > end && i < data.length) || (start <= end && i <= end); i++){
       ans += data[i];
       if (i != end) ans += " ";
       else ans += "}";
@@ -86,7 +86,18 @@ public class MyDeque<E>{
   }
 
   public E removeFirst(){
-    return data[0];
+    if (size() == 0) throw new NoSuchElementException();
+    E temp = data[start];
+    if (size() != 1){
+      if (start == data.length - 1){
+        start = 0;
+      }
+      else{
+        start++;
+      }
+    }
+    size--;
+    return temp;
   }
 
   public E removeLast(){
@@ -102,16 +113,58 @@ public class MyDeque<E>{
   }
 
   public static void main(String[] args) {
+    System.out.println();
+    System.out.println();
+    System.out.println();
+    
     MyDeque<Integer> one = new MyDeque<Integer>();
+    System.out.println("data: " + one);
+    System.out.println("size: " + one.size());
+
+    System.out.println();
+
+    System.out.println("Adding 1 - 20 using addFirst");
     for (int i = 0; i < 20; i++){
       one.addFirst(20 - i);
     }
-    for (int i = 1; i < 20; i++){
-      one.addLast(20 + i);
+    System.out.println("data: " + one);
+    System.out.println("size: " + one.size());
+
+    System.out.println();
+
+    System.out.println("Adding 21 - 40 using addLast");
+    for (int i = 0; i < 20; i++){
+      one.addLast(21 + i);
     }
     System.out.println("data: " + one);
     System.out.println("size: " + one.size());
+
+    System.out.println();
+
+    System.out.println("Removing 1 - 40 using removeFirst");
+    for (int i = 0; i < 40; i++){
+      one.removeFirst();
+    }
+    System.out.println("data: " + one);
+    System.out.println("size: " + one.size());
+
+    System.out.println();
+
+    System.out.println("Adding 21 - 40 using addLast");
+    for (int i = 0; i < 20; i++){
+      one.addLast(21 + i);
+    }
+    System.out.println("data: " + one);
+    System.out.println("size: " + one.size());
+
+    System.out.println();
+
+
+    System.out.println("data: " + one);
+    System.out.println("size: " + one.size());
     System.out.println("First: " + one.getFirst());
+    System.out.println("start: " + one.start);
     System.out.println("Last: " + one.getLast());
+    System.out.println("end: " + one.end);
   }
 }
