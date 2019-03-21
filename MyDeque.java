@@ -101,7 +101,18 @@ public class MyDeque<E>{
   }
 
   public E removeLast(){
-    return data[0];
+    if (size() == 0) throw new NoSuchElementException();
+    E temp = data[end];
+    if (size() != 1){
+      if (end == 0){
+        end = data.length - 1;
+      }
+      else{
+        end--;
+      }
+    }
+    size--;
+    return temp;
   }
 
   public E getFirst(){
@@ -116,7 +127,7 @@ public class MyDeque<E>{
     System.out.println();
     System.out.println();
     System.out.println();
-    
+
     MyDeque<Integer> one = new MyDeque<Integer>();
     System.out.println("data: " + one);
     System.out.println("size: " + one.size());
@@ -153,6 +164,15 @@ public class MyDeque<E>{
     System.out.println("Adding 21 - 40 using addLast");
     for (int i = 0; i < 20; i++){
       one.addLast(21 + i);
+    }
+    System.out.println("data: " + one);
+    System.out.println("size: " + one.size());
+
+    System.out.println();
+
+    System.out.println("Removing 31 - 40 using removeLast");
+    for (int i = 0; i < 10; i++){
+      one.removeLast();
     }
     System.out.println("data: " + one);
     System.out.println("size: " + one.size());
