@@ -13,7 +13,7 @@ public class MyDeque<E>{
   }
 
   public int size(){
-
+    return size;
   }
 
   public String toString(){
@@ -37,10 +37,10 @@ public class MyDeque<E>{
   }
 
   public E getFirst(){
-
+    return data[start];
   }
 
   public E getLast(){
-
+    return data[end];
   }
 }
