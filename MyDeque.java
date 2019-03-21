@@ -66,6 +66,8 @@ public class MyDeque<E>{
       }
     }
     data = temp;
+    start = 0;
+    end = size() - 1;
   }
 
   public void addLast(E element){
