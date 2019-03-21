@@ -1,3 +1,4 @@
+import java.util.*;
 @SuppressWarnings("unchecked")
 
 public class MyDeque<E>{
@@ -51,7 +52,20 @@ public class MyDeque<E>{
   }
 
   private void resize(){
-
+    E[] temp = (E[]) new Object[size() * 2 + 1];
+    System.out.println("temp: " + Arrays.toString(temp));
+    int idx = 0;
+    for (int i = start; i <= end || i < data.length; i++){
+      temp[idx] = data[i];
+      idx++;
+    }
+    if (start > end){
+      for (int i = 0; i <= end; i++){
+        temp[idx] = data[i];
+        idx++;
+      }
+    }
+    data = temp;
   }
 
   public void addLast(E element){
@@ -75,13 +89,13 @@ public class MyDeque<E>{
   }
 
   public static void main(String[] args) {
-    MyDeque<Integer> one = new MyDeque<Integer>(100);
-    one.addFirst(5);
-    one.addFirst(4);
-    one.addFirst(3);
-    one.addFirst(2);
-    one.addFirst(1);
-    one.addFirst(0);
-    System.out.println(one);
+    MyDeque<Integer> one = new MyDeque<Integer>();
+    for (int i = 0; i < 50; i++){
+      one.addFirst(50 - i);
+    }
+    System.out.println("data: " + one);
+    System.out.println("size: " + one.size());
+    System.out.println("First: " + one.getFirst());
+    System.out.println("Last: " + one.getLast());
   }
 }
