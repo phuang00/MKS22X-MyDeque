@@ -20,7 +20,7 @@ public class MyDeque<E>{
   public String toString(){
     if (start == end) return "{}";
     String ans = "{";
-    for (int i = start; i <= end || i < data.length; i++){
+    for (int i = start; i <= end && i < data.length; i++){
       ans += data[i];
       if (i != end) ans += " ";
       else ans += "}";
@@ -53,7 +53,6 @@ public class MyDeque<E>{
 
   private void resize(){
     E[] temp = (E[]) new Object[size() * 2 + 1];
-    System.out.println("temp: " + Arrays.toString(temp));
     int idx = 0;
     for (int i = start; i <= end || i < data.length; i++){
       temp[idx] = data[i];
@@ -71,7 +70,19 @@ public class MyDeque<E>{
   }
 
   public void addLast(E element){
-
+    if (size() == data.length){
+      resize();
+    }
+    if (size() != 0){
+      if (end == data.length - 1){
+        end = 0;
+      }
+      else{
+        end++;
+      }
+    }
+    data[end] = element;
+    size++;
   }
 
   public E removeFirst(){
@@ -92,8 +103,11 @@ public class MyDeque<E>{
 
   public static void main(String[] args) {
     MyDeque<Integer> one = new MyDeque<Integer>();
-    for (int i = 0; i < 50; i++){
-      one.addFirst(50 - i);
+    for (int i = 0; i < 20; i++){
+      one.addFirst(20 - i);
+    }
+    for (int i = 1; i < 20; i++){
+      one.addLast(20 + i);
     }
     System.out.println("data: " + one);
     System.out.println("size: " + one.size());
