@@ -19,7 +19,7 @@ public class MyDeque<E>{
   public String toString(){
     if (start == end) return "{}";
     String ans = "{";
-    for (int i = start; i <= end || i < size; i++){
+    for (int i = start; i <= end || i < data.length; i++){
       ans += data[i];
       if (i != end) ans += " ";
       else ans += "}";
@@ -35,6 +35,22 @@ public class MyDeque<E>{
   }
 
   public void addFirst(E element){
+    if (size() == data.length){
+      resize();
+    }
+    if (size() != 0){
+      if (start == 0){
+        start = data.length - 1;
+      }
+      else{
+        start--;
+      }
+    }
+    data[start] = element;
+    size++;
+  }
+
+  private void resize(){
 
   }
 
@@ -60,6 +76,12 @@ public class MyDeque<E>{
 
   public static void main(String[] args) {
     MyDeque<Integer> one = new MyDeque<Integer>(100);
+    one.addFirst(5);
+    one.addFirst(4);
+    one.addFirst(3);
+    one.addFirst(2);
+    one.addFirst(1);
+    one.addFirst(0);
     System.out.println(one);
   }
 }
