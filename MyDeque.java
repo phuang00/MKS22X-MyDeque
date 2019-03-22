@@ -55,7 +55,7 @@ public class MyDeque<E>{
     if (element == null) throw new NullPointerException();
     // if the parameter element is null, throw NullPointerException
     if (size() == data.length){
-      // if the size is equal to the length of the data
+      // if the array is at its capacity
       resize();
       // call resize
     }
@@ -110,59 +110,88 @@ public class MyDeque<E>{
 
   public void addLast(E element){
     if (element == null) throw new NullPointerException();
+    // if the parameter element is null, throw NullPointerException
     if (size() == data.length){
+      // if the array is full
       resize();
+      // call resize
     }
     if (size() != 0){
+      // if size is not zero
       if (end == data.length - 1){
+        // and if end is the last index of data
         end = 0;
+        // end is set to zero
       }
       else{
         end++;
+        // else end is increased by one
       }
     }
     data[end] = element;
+    // value of the next end index is set to element
     size++;
+    // increase size by one
   }
 
   public E removeFirst(){
     if (size() == 0) throw new NoSuchElementException();
+    // if the size is zero, throw NoSuchElementException
     E temp = data[start];
+    // the temp value to be returned is the value at the old start index of data
     if (size() != 1){
+      // if the size is not one
       if (start == data.length - 1){
+        // and if start is the last index of the array
         start = 0;
+        // start is set to zero
       }
       else{
         start++;
+        // else start is increased by one
       }
     }
     size--;
+    // size decreases by one
     return temp;
+    // return value that is removed
   }
 
   public E removeLast(){
     if (size() == 0) throw new NoSuchElementException();
+    // if size is equal to zero, throw NoSuchElementException
     E temp = data[end];
+    // temp is set to value at old end index of data
     if (size() != 1){
+      // if size is not one
       if (end == 0){
+        // and if end is equal to zero
         end = data.length - 1;
+        // end is set to the last index of data
       }
       else{
         end--;
+        // else end decreases by one
       }
     }
     size--;
+    // size is decreased by one
     return temp;
+    // return the value at the old end index of data
   }
 
   public E getFirst(){
     if (size() == 0) throw new NoSuchElementException();
+    // if the size is zero, throw NoSuchElementException
     return data[start];
+    // else return the value at index start of data (the first value)
   }
 
   public E getLast(){
     if (size() == 0) throw new NoSuchElementException();
+    // if the size is zero, throw NoSuchElementException
     return data[end];
+    // else return the value at index end of data (the last value)
   }
 
   public static void main(String[] args) {
