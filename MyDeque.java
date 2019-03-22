@@ -7,32 +7,48 @@ public class MyDeque<E>{
 
   public MyDeque(){
     data = (E[])new Object[10];
+    // initialize data array with default capacity of 10
   }
 
   public MyDeque(int initialCapacity){
     data = (E[])new Object[initialCapacity];
+    // initialize data array with a capacity of initialCapacity
   }
 
   public int size(){
     return size;
+    // return the size
   }
 
   public String toString(){
     if (size() == 0) return "{}";
+    // if the size is zero, return empty brackets
     String ans = "{";
+    // start the ans String with open brackets
     for (int i = start;(start > end && i < data.length) || (start <= end && i <= end); i++){
+      // for every index from start to either the end (inclusive and if end > start)
+      // or the length of the data (exclusive)
       ans += data[i];
+      // add the value at the index to ans
       if (i != end) ans += " ";
+      // if the index is not end, add a space after the value
       else ans += "}";
+      // else add closing brackets
     }
     if (start > end){
+      // if start is greater than end
       for (int i = 0; i <= end; i++){
+        // for every index between 0 and end (inclusive)
         ans += data[i];
+        // add the value at the index to ans
         if (i != end) ans += " ";
+        // if index is not end, add a space after the value
         else ans += "}";
+        // else add closing brackets
       }
     }
     return ans;
+    // return String ans
   }
 
   public void addFirst(E element){
