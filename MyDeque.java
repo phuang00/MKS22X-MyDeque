@@ -36,6 +36,7 @@ public class MyDeque<E>{
   }
 
   public void addFirst(E element){
+    if (element == null) throw new NullPointerException();
     if (size() == data.length){
       resize();
     }
@@ -70,6 +71,7 @@ public class MyDeque<E>{
   }
 
   public void addLast(E element){
+    if (element == null) throw new NullPointerException();
     if (size() == data.length){
       resize();
     }
@@ -116,10 +118,12 @@ public class MyDeque<E>{
   }
 
   public E getFirst(){
+    if (size() == 0) throw new NoSuchElementException();
     return data[start];
   }
 
   public E getLast(){
+    if (size() == 0) throw new NoSuchElementException();
     return data[end];
   }
 
