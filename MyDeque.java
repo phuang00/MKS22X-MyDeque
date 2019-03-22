@@ -217,7 +217,9 @@ public class MyDeque<E>{
 
     System.out.println("Adding 1 - 20 using addFirst");
     for (int i = 0; i < 20; i++){
+      System.out.println("data: " + one);
       one.addFirst(20 - i);
+
     }
     System.out.println("data: " + one);
     System.out.println("size: " + one.size());
@@ -233,6 +235,7 @@ public class MyDeque<E>{
 
     System.out.println("Adding 21 - 40 using addLast");
     for (int i = 0; i < 20; i++){
+      System.out.println("data: " + one);
       one.addLast(21 + i);
     }
     System.out.println("data: " + one);
@@ -249,6 +252,7 @@ public class MyDeque<E>{
 
     System.out.println("Removing 1 - 40 using removeFirst");
     for (int i = 0; i < 40; i++){
+      System.out.println("data: " + one);
       one.removeFirst();
     }
     System.out.println("data: " + one);
@@ -268,6 +272,7 @@ public class MyDeque<E>{
 
     System.out.println("Adding 21 - 40 using addLast");
     for (int i = 0; i < 20; i++){
+      System.out.println("data: " + one);
       one.addLast(21 + i);
     }
     System.out.println("data: " + one);
@@ -279,6 +284,7 @@ public class MyDeque<E>{
 
     System.out.println("Removing 31 - 40 using removeLast");
     for (int i = 0; i < 10; i++){
+      System.out.println("data: " + one);
       one.removeLast();
     }
     System.out.println("data: " + one);
