@@ -53,37 +53,59 @@ public class MyDeque<E>{
 
   public void addFirst(E element){
     if (element == null) throw new NullPointerException();
+    // if the parameter element is null, throw NullPointerException
     if (size() == data.length){
+      // if the size is equal to the length of the data
       resize();
+      // call resize
     }
     if (size() != 0){
+      // if size is no equal to zero
       if (start == 0){
+        // and if start is equal to zero
         start = data.length - 1;
+        // start is set to the last index of the data array
       }
       else{
         start--;
+        // else decrease start by one
       }
     }
     data[start] = element;
+    // set the value at the new start to element
     size++;
+    // increase size by one
   }
 
   private void resize(){
     E[] temp = (E[]) new Object[size() * 2 + 1];
+    // new temp array is equal to the size times two plus one (in case size is 0)
     int idx = 0;
-    for (int i = start; i <= end || i < data.length; i++){
+    // int idx is set to the current index of temp (starting at 0)
+    for (int i = start; (start > end && i < data.length) || (start <= end && i <= end); i++){
+      // for every index from start to either the end (inclusive and if end > start)
+      // or the length of the data (exclusive)
       temp[idx] = data[i];
+      // copy the values over to temp such that first element is at index 0
       idx++;
+      // increase current index of temp by one
     }
     if (start > end){
+      // if start is greater than end
       for (int i = 0; i <= end; i++){
+        // for every index between 0 and end (inclusive)
         temp[idx] = data[i];
+        // copy value over, starting from where it left off in the previous loop
         idx++;
+        // increase current index of temp by one
       }
     }
     data = temp;
+    // data is set to the temp array
     start = 0;
+    // start is set to zero
     end = size() - 1;
+    // end is set to the size minus one
   }
 
   public void addLast(E element){
