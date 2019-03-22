@@ -202,6 +202,16 @@ public class MyDeque<E>{
     MyDeque<Integer> one = new MyDeque<Integer>();
     System.out.println("data: " + one);
     System.out.println("size: " + one.size());
+    try{
+      System.out.println("First: " + one.getFirst());
+    }catch (NoSuchElementException e){
+      System.out.println("Catched NoSuchElementException for getFirst");
+    }
+    try{
+      System.out.println("Last: " + one.getLast());
+    }catch (NoSuchElementException e){
+      System.out.println("Catched NoSuchElementException for getLast");
+    }
 
     System.out.println();
 
@@ -211,6 +221,13 @@ public class MyDeque<E>{
     }
     System.out.println("data: " + one);
     System.out.println("size: " + one.size());
+    System.out.println("First: " + one.getFirst());
+    System.out.println("Last: " + one.getLast());
+    try{
+      one.addFirst(null);
+    }catch (NullPointerException e){
+      System.out.println("Catched NullPointerException for addFirst");
+    }
 
     System.out.println();
 
@@ -220,6 +237,13 @@ public class MyDeque<E>{
     }
     System.out.println("data: " + one);
     System.out.println("size: " + one.size());
+    System.out.println("First: " + one.getFirst());
+    System.out.println("Last: " + one.getLast());
+    try{
+      one.addLast(null);
+    }catch (NullPointerException e){
+      System.out.println("Catched NullPointerException for addLast");
+    }
 
     System.out.println();
 
@@ -229,6 +253,16 @@ public class MyDeque<E>{
     }
     System.out.println("data: " + one);
     System.out.println("size: " + one.size());
+    try{
+      one.removeFirst();
+    }catch (NoSuchElementException e){
+      System.out.println("Catched NoSuchElementException for removeFirst");
+    }
+    try{
+      one.removeLast();
+    }catch (NoSuchElementException e){
+      System.out.println("Catched NoSuchElementException for removeLast");
+    }
 
     System.out.println();
 
@@ -238,6 +272,8 @@ public class MyDeque<E>{
     }
     System.out.println("data: " + one);
     System.out.println("size: " + one.size());
+    System.out.println("First: " + one.getFirst());
+    System.out.println("Last: " + one.getLast());
 
     System.out.println();
 
@@ -247,15 +283,17 @@ public class MyDeque<E>{
     }
     System.out.println("data: " + one);
     System.out.println("size: " + one.size());
+    System.out.println("First: " + one.getFirst());
+    System.out.println("Last: " + one.getLast());
 
     System.out.println();
 
 
-    System.out.println("data: " + one);
+    /*System.out.println("data: " + one);
     System.out.println("size: " + one.size());
     System.out.println("First: " + one.getFirst());
     System.out.println("start: " + one.start);
     System.out.println("Last: " + one.getLast());
-    System.out.println("end: " + one.end);
+    System.out.println("end: " + one.end);*/
   }
 }
