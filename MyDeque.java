@@ -25,7 +25,7 @@ public class MyDeque<E>{
     // if the size is zero, return empty brackets
     String ans = "{";
     // start the ans String with open brackets
-    for (int i = start;(start > end && i < data.length) || (start <= end && i <= end); i++){
+    for (int i = start; i < data.length && ((start > end) || (start <= end && i <= end)); i++){
       // for every index from start to either the end (inclusive and if end > start)
       // or the length of the data (exclusive)
       ans += data[i];
@@ -82,7 +82,7 @@ public class MyDeque<E>{
     // new temp array is equal to the size times two plus one (in case size is 0)
     int idx = 0;
     // int idx is set to the current index of temp (starting at 0)
-    for (int i = start; (start > end && i < data.length) || (start <= end && i <= end); i++){
+    for (int i = start; i < data.length && ((start > end) || (start <= end && i <= end)); i++){
       // for every index from start to either the end (inclusive and if end > start)
       // or the length of the data (exclusive)
       temp[idx] = data[i];
@@ -199,7 +199,7 @@ public class MyDeque<E>{
     System.out.println();
     System.out.println();
 
-    MyDeque<Integer> one = new MyDeque<Integer>();
+    MyDeque<Integer> one = new MyDeque<Integer>(0);
     System.out.println("data: " + one);
     System.out.println("size: " + one.size());
     try{
