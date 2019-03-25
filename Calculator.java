@@ -35,6 +35,13 @@ public class Calculator{
     }
 
     public static void main(String[] args) {
-      System.out.println(eval("2 4 71 8.5 + - * 5 +"));
+      String[] expressions = new String[] {"2 4 71 8.5 + - * 5 +",
+                                           "1 2 /", "10 2.0 +",
+                                           "11 3 - 4 + 2.5 *",
+                                           "8 2 + 99 9 - * 2 + 9 -",
+                                           "1 2 3 4 5 + * - -"};
+      for (String exp: expressions){
+        System.out.println(exp + " = " + eval(exp));
+      }
     }
 }
