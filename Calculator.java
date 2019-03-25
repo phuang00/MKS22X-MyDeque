@@ -11,26 +11,30 @@ public class Calculator{
           nums.addLast(nums.removeLast() + second);
         }
         else if (token.equals("-")){
-
+          double second = nums.removeLast();
+          nums.addLast(nums.removeLast() - second);
         }
         else if (token.equals("*")){
-
+          double second = nums.removeLast();
+          nums.addLast(nums.removeLast() * second);
         }
         else if (token.equals("/")){
-
+          double second = nums.removeLast();
+          nums.addLast(nums.removeLast() / second);
         }
         else if (token.equals("%")){
-
+          double second = nums.removeLast();
+          nums.addLast(nums.removeLast() % second);
         }
         else{
           nums.addLast(Double.parseDouble(token));
         }
-        System.out.println(nums);
+        //System.out.println(nums);
       }
-      return -1;
+      return nums.getFirst();
     }
 
     public static void main(String[] args) {
-      eval("2 4 71 8.5 + - * 5 +");
+      System.out.println(eval("2 4 71 8.5 + - * 5 +"));
     }
 }
