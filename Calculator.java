@@ -6,13 +6,23 @@ public class Calculator{
      */
     public static double eval(String s){
       MyDeque<Double> nums = new MyDeque<>();
+      // create a new MyDeque, nums
       String[] tokens = s.split(" ");
+      // split the string based on spaces
       for (String token: tokens){
+        // for every token in the String array
         try{
           nums.addLast(Double.parseDouble(token));
+          // try to parse the token and add it to nums
         }catch (NumberFormatException e){
+          // if it's not a double
           double second = nums.removeLast();
+          // remove last element of nums (the second number of the operation, hence second)
           double first = nums.removeLast();
+          // remove last element again (the first number of the operation, hence first)
+
+          // perform the proper operations to first and second based on the operator
+          // and add it back to nums
           if (token.equals("+")){
             nums.addLast(first + second);
           }
@@ -28,10 +38,12 @@ public class Calculator{
           else{
             nums.addLast(first % second);
           }
+          //
         }
         //System.out.println(nums);
       }
       return nums.getFirst();
+      // return the first (and only) element in nums
     }
 
     public static void main(String[] args) {
