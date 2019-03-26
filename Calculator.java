@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Calculator{
     /*Evaluate a postfix expression stored in s.
      *Assume valid postfix notation, separated by spaces.
@@ -6,28 +8,26 @@ public class Calculator{
       MyDeque<Double> nums = new MyDeque<>();
       String[] tokens = s.split(" ");
       for (String token: tokens){
-        if (token.equals("+")){
-          double second = nums.removeLast();
-          nums.addLast(nums.removeLast() + second);
-        }
-        else if (token.equals("-")){
-          double second = nums.removeLast();
-          nums.addLast(nums.removeLast() - second);
-        }
-        else if (token.equals("*")){
-          double second = nums.removeLast();
-          nums.addLast(nums.removeLast() * second);
-        }
-        else if (token.equals("/")){
-          double second = nums.removeLast();
-          nums.addLast(nums.removeLast() / second);
-        }
-        else if (token.equals("%")){
-          double second = nums.removeLast();
-          nums.addLast(nums.removeLast() % second);
-        }
-        else{
+        try{
           nums.addLast(Double.parseDouble(token));
+        }catch (NumberFormatException e){
+          double second = nums.removeLast();
+          double first = nums.removeLast();
+          if (token.equals("+")){
+            nums.addLast(first + second);
+          }
+          else if (token.equals("-")){
+            nums.addLast(first - second);
+          }
+          else if (token.equals("*")){
+            nums.addLast(first * second);
+          }
+          else if (token.equals("/")){
+            nums.addLast(first / second);
+          }
+          else{
+            nums.addLast(first % second);
+          }
         }
         //System.out.println(nums);
       }
