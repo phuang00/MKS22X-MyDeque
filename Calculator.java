@@ -42,8 +42,8 @@ public class Calculator{
         }
         //System.out.println(nums);
       }
-      return nums.getFirst();
-      // return the first (and only) element in nums
+      return nums.getLast();
+      // return the last (and only) element in nums
     }
 
     public static void main(String[] args) {
